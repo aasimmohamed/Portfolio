@@ -1,227 +1,652 @@
- <!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="style.css">
-     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
-     <title>M.A.Mohamed</title>
- </head>
- <body>
-     <div class="scroll-up-btn">
-         <i class="fas fa-angle-up"></i>
-     </div>
-     <!-- navbar -->
-     <nav class="navbar">
-         <div class="max-width">
-             <div class="logo"><a href="#">Portfo<span>lio.</span></a></div>
-             <ul class="menu">
-                 <li><a href="#home" class="menu-btn">Home</a></li>
-                 <li><a href="#about" class="menu-btn">About</a></li>
-                 <li><a href="#services" class="menu-btn">Services</a></li>
-                 <li><a href="#skills" class="menu-btn">Skills</a></li>
-                 <li><a href="#contact" class="menu-btn">Contact</a></li>
-             </ul>
-             <div class="menu-btn">
-                 <i class="fas fa-bars"></i>
-             </div>
-         </div>
-     </nav>
-     
-     <!-- home section start -->
-     <section class="home" id="home">
-         <div class="max-width">
-             <div class="home-content">
-                 <div class="text-1">Hello, My Name is</div>
-                 <div class="text-2">M.A.Mohamed</div>
-                 <div class="text-3">And I'm a <span class="typing"></span></div>
-                 <a href="https://www.linkedin.com/in/aasim-mohamed-423346215/">Hire me</a>
-             </div>
-         </div>
-     </section>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Set the theme before first paint: use the saved choice if the visitor
+     has picked one before, otherwise fall back to the device/OS setting. -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var theme =
+            saved ||
+            (window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
+    <title>M.A. Mohamed — Full-Stack Software Engineer</title>
+    <meta
+      name="description"
+      content="Portfolio of M.A. Mohamed, a full-stack software engineer specializing in Ionic, React, Node.js and Flutter."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- progress bar -->
+    <div class="scroll-progress">
+      <div class="scroll-progress__bar" id="scrollBar"></div>
+    </div>
 
-    <!-- about section start -->
-    <section class="about" id="about">
-        <div class="max-width">
-            <h2 class="title">About me</h2>
-            <div class="about-content">
-                <div class="column left">
-                    <img src="image/02.png" alt="">
-                </div>
-                <div class="column right">
-                    <div class="text">I'm M.A.Mohamed and I'm a <span class="typing-2"></span></div>
-                    <p>I am a software engineering undergraduate interested in coding and programming. I view myself as a motivated and self-disciplined person, eager to learn the unknown and apply my knowledge and skills to everything I do. I would like to develop myself in a professional environment so that I can use my knowledge for my work.</p>
-                    <a href="files/M.A.Mohamed.pdf">Download CV</a>
-                </div>
+    <!-- nav: editor tab bar -->
+    <header class="topbar" id="topbar">
+      <div class="topbar__inner">
+        <a href="#home" class="brand">
+          <span class="brand__dot"></span>
+          <span class="brand__name">mamohamed</span
+          ><span class="brand__ext">.dev</span>
+        </a>
+
+        <nav class="tabs" id="tabs">
+          <a href="#home" class="tab is-active" data-tab
+            >home<span class="tab__file">.js</span></a
+          >
+          <a href="#about" class="tab" data-tab
+            >about<span class="tab__file">.md</span></a
+          >
+          <a href="#experience" class="tab" data-tab
+            >experience<span class="tab__file">.log</span></a
+          >
+          <a href="#skills" class="tab" data-tab
+            >skills<span class="tab__file">.json</span></a
+          >
+          <a href="#projects" class="tab" data-tab
+            >projects<span class="tab__file">/</span></a
+          >
+          <a href="#contact" class="tab" data-tab
+            >contact<span class="tab__file">.sh</span></a
+          >
+        </nav>
+
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="Switch color theme"
+        >
+          <i
+            class="fa-solid fa-sun theme-toggle__icon theme-toggle__icon--sun"
+          ></i>
+          <i
+            class="fa-solid fa-moon theme-toggle__icon theme-toggle__icon--moon"
+          ></i>
+        </button>
+
+        <a href="#contact" class="topbar__cta">Hire me</a>
+
+        <button class="burger" id="burger" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <nav class="mobile-menu" id="mobileMenu">
+        <a href="#home" data-tab>home.js</a>
+        <a href="#about" data-tab>about.md</a>
+        <a href="#experience" data-tab>experience.log</a>
+        <a href="#skills" data-tab>skills.json</a>
+        <a href="#projects" data-tab>projects/</a>
+        <a href="#contact" data-tab>contact.sh</a>
+        <button
+          class="theme-toggle theme-toggle--mobile"
+          id="themeToggleMobile"
+          type="button"
+          aria-label="Switch color theme"
+        >
+          <i
+            class="fa-solid fa-sun theme-toggle__icon theme-toggle__icon--sun"
+          ></i>
+          <i
+            class="fa-solid fa-moon theme-toggle__icon theme-toggle__icon--moon"
+          ></i>
+          <span class="theme-toggle__label">Toggle theme</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ============ HERO ============ -->
+      <section class="hero" id="home">
+        <div class="hero__inner">
+          <div class="hero__intro">
+            <p class="eyebrow">
+              <span class="eyebrow__blink">●</span> available for new projects
+            </p>
+            <h1 class="hero__title">
+              Building software<br />that people
+              <span class="hl">actually use.</span>
+            </h1>
+            <p class="hero__lede">
+              I'm M.A. Mohamed, a full-stack engineer from Sri Lanka with 3.5
+              years of experience shipping web and mobile products — from
+              property-management platforms to flight-tracking apps.
+            </p>
+            <div class="hero__actions">
+              <a href="#projects" class="btn btn--primary"
+                >View projects <i class="fa-solid fa-arrow-right"></i
+              ></a>
+              <a href="files/M.A.Mohamed.pdf" class="btn btn--ghost" download
+                >Download résumé <i class="fa-solid fa-download"></i
+              ></a>
             </div>
-        </div>
-    </section>
-
-    <!-- services section start -->
-    <section class="services" id="services">
-        <div class="max-width">
-            <h2 class="title">My services</h2>
-            <div class="serv-content">
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-code"></i>
-                        <div class="text">Web Development</div>
-                        <p>I can Create Websites, Web Applications, Web Portals, and Online Stores.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-mobile"></i>
-                        <div class="text">Mobile App Development</div>
-                        <p>I can Create Mobile Applications. I use an Ionic Framework. I Create an App for IOS and ANDROID.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-paint-brush"></i>
-                        <div class="text">Web Design</div>
-                        <p>I can Design a Web. And UI Design, UX Design, Responsive Web Design, Wabsite Redesign, and e-commerce Web Design.</p>
-                    </div>
-                </div>
+            <div class="hero__stats">
+              <div class="stat">
+                <span class="stat__num">3.5<i>yrs</i></span
+                ><span class="stat__label">experience</span>
+              </div>
+              <div class="stat">
+                <span class="stat__num">6<i>+</i></span
+                ><span class="stat__label">shipped products</span>
+              </div>
+              <div class="stat">
+                <span class="stat__num">3</span
+                ><span class="stat__label">companies</span>
+              </div>
             </div>
-        </div>
-    </section>
+          </div>
 
-    <!-- skills section start -->
-    <section class="skills" id="skills">
-        <div class="max-width">
-            <h2 class="title">My skils</h2>
-            <div class="skills-content">
-                <div class="column left">
-                    <div class="text">My creative skills & expriences</div>
-                    <p>I can <b>create, design, maintain, edit and debug</b> Software. I use <b>HTML, CSS, and JavaScript</b> Programming Languages ​​to build Websites. I use the <b>Ionic Framework</b> for mobile app development. Next, I can work on <b>WordPress</b> as well. I also have some knowledge of <b>Typescript, Java, and C ++</b> programming languages. I have also worked on databases such as <b>Firebase, MySQL, and MongoDB.</b></p>
-                    <a href="https://www.linkedin.com/in/aasim-mohamed-423346215/">Read more</a>
-                </div>
-                <div class="column right">
-                    <div class="bars">
-                        <div class="info">
-                            <span>HTML</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="line html"></div>
-                    </div>
-                    <div class="bars">
-                        <div class="info">
-                            <span>CSS</span>
-                            <span>60%</span>
-                        </div>
-                        <div class="line css"></div>
-                    </div>
-                    <div class="bars">
-                        <div class="info">
-                            <span>JavaScript</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="line js"></div>
-                    </div>
-                    <div class="bars">
-                        <div class="info">
-                            <span>Ionic</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="line ionic"></div>
-                    </div>
-                    <div class="bars">
-                        <div class="info">
-                            <span>WordPress</span>
-                            <span>60%</span>
-                        </div>
-                        <div class="line wordpress"></div>
-                    </div>
-                    <div class="bars">
-                        <div class="info">
-                            <span>Firebase</span>
-                            <span>70%</span>
-                        </div>
-                        <div class="line firebase"></div>
-                    </div>
-                </div>
+          <div class="hero__editor">
+            <div class="editor">
+              <div class="editor__titlebar">
+                <span class="dot dot--red"></span
+                ><span class="dot dot--yellow"></span
+                ><span class="dot dot--green"></span>
+                <span class="editor__filename">developer.js</span>
+              </div>
+              <div class="editor__body">
+                <pre class="code" id="typedCode" aria-hidden="true"></pre>
+              </div>
+              <div class="editor__statusbar">
+                <span><i class="fa-solid fa-code-branch"></i> main</span>
+                <span id="typedRole">Developer</span>
+                <span class="editor__statusbar-right">UTF-8 · JavaScript</span>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+        <a href="#about" class="scroll-hint" aria-label="Scroll down"
+          ><span></span
+        ></a>
+      </section>
 
-    <!-- contact section start -->
-    <section class="contact" id="contact">
-        <div class="max-width">
-            <h2 class="title">Contact me</h2>
-            <div class="contact-content">
-                <div class="column left">
-                    <div class="text">Get in Touch</div>
-                    <div class="icons">
-                        <div class="row">
-                            <i class="fas fa-user"></i>
-                            <div class="info">
-                                <div class="head">Name</div>
-                                <div class="sub-title">M.A.Mohamed</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div class="info">
-                                <div class="head">Address</div>
-                                <div class="sub-title">No.119/5, Kapuwatta, Denipitiya, Weligama, Matara, Sri Lanka.</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <i class="fas fa-envelope"></i>
-                            <div class="info">
-                                <div class="head">Email</div>
-                                <div class="sub-title">mhdsha29@gmail.com</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <i class="fas fa-phone"></i>
-                            <div class="info">
-                                <div class="head">Phone</div>
-                                <div class="sub-title">+94766925805</div>
-                            </div>
-                        </div>
-                    </div>
+      <!-- ============ ABOUT ============ -->
+      <section class="about" id="about">
+        <div class="section__inner">
+          <p class="section__eyebrow">01 · about.md</p>
+          <div class="about__grid">
+            <div class="about__card">
+              <div class="terminal">
+                <div class="editor__titlebar">
+                  <span class="dot dot--red"></span
+                  ><span class="dot dot--yellow"></span
+                  ><span class="dot dot--green"></span>
+                  <span class="editor__filename">whoami</span>
                 </div>
-                <div class="column right">
-                    <div class="text">Message me</div>
-                    <form action="https://formspree.io/f/mnqwrzoq" method="POST">
-                        <div class="fields">
-                            <div class="field name">
-                                <input type="text" placeholder="Name" required name="user-name">
-                            </div>
-                            <div class="field email">
-                                <input type="email" placeholder="Email" required name="email">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <input type="text" placeholder="Subject" required name="sub-title">
-                        </div>
-                        <div class="field textarea">
-                            <textarea cols="30" rows="10" placeholder="Describe project.." required name="message"></textarea>
-                        </div>
-                        <div class="button">
-                            <button type="submit">Send message</button>
-                        </div>
-                    </form>
+                <div class="terminal__body">
+                  <p><span class="prompt">$</span> whoami</p>
+                  <div class="avatar" aria-hidden="true">MA</div>
+                  <p><span class="prompt">$</span> cat profile.txt</p>
+                  <p class="terminal__muted">
+                    name: M.A. Mohamed<br />role: Full-Stack Software
+                    Engineer<br />base: Weligama, Matara, Sri Lanka<br />speaks:
+                    English, Sinhala, Tamil
+                  </p>
+                  <p>
+                    <span class="prompt">$</span>
+                    <span class="cursor-block">&nbsp;</span>
+                  </p>
                 </div>
+              </div>
             </div>
-        </div>
-    </section>
 
-    <!-- footer section start -->
-    <footer>
-        <span>Created By <a href="https://www.linkedin.com/in/aasim-mohamed-423346215/">M.A.Mohamed</a> | <span class="far fa-copyright"></span> 2022 All rights reserved.</span>
+            <div class="about__content">
+              <h2 class="section__title">
+                A developer who ships, not just prototypes.
+              </h2>
+              <p>
+                I'm a full-stack engineer who's spent the last 3.5 years turning
+                briefs into production software — mobile apps built with Ionic
+                and Flutter, web platforms in React and Next.js, and the Node.js
+                and PHP backends that hold them together.
+              </p>
+              <p>
+                Most of my work has shipped for clients in Germany, spanning
+                property maintenance, telecom, and logistics — meaning I'm as
+                comfortable owning a feature end-to-end as I am fitting into an
+                existing codebase and team.
+              </p>
+              <div class="facts">
+                <div class="fact">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <div>
+                    <strong>Higher National Diploma, IT</strong
+                    ><span
+                      >Sri Lanka Institute of Advanced Technological Education ·
+                      2021–2024</span
+                    >
+                  </div>
+                </div>
+                <div class="fact">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <div>
+                    <strong>Based in</strong
+                    ><span>Weligama, Matara, Sri Lanka</span>
+                  </div>
+                </div>
+              </div>
+              <a href="#contact" class="text-link"
+                >Let's build something <i class="fa-solid fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ EXPERIENCE (git log style) ============ -->
+      <section class="experience" id="experience">
+        <div class="section__inner">
+          <p class="section__eyebrow section__eyebrow--light">
+            02 · experience.log
+          </p>
+          <h2 class="section__title section__title--light">
+            git log --author="M.A. Mohamed"
+          </h2>
+
+          <div class="gitlog">
+            <article class="commit">
+              <div class="commit__rail">
+                <span class="commit__node commit__node--current"></span>
+              </div>
+              <div class="commit__body">
+                <div class="commit__head">
+                  <span class="commit__branch">HEAD → main</span>
+                  <span class="commit__date">05/2026 — Present</span>
+                </div>
+                <h3 class="commit__role">
+                  Full Stack Developer
+                  <span class="commit__at">@ Nintellix</span>
+                </h3>
+                <p class="commit__loc">
+                  <i class="fa-solid fa-location-dot"></i> Colombo, Sri Lanka
+                </p>
+              </div>
+            </article>
+
+            <article class="commit">
+              <div class="commit__rail"><span class="commit__node"></span></div>
+              <div class="commit__body">
+                <div class="commit__head">
+                  <span class="commit__branch">merged</span>
+                  <span class="commit__date">01/2026 — 04/2026</span>
+                </div>
+                <h3 class="commit__role">
+                  Full Stack Developer
+                  <span class="commit__at">@ iTeq Solution Center</span>
+                </h3>
+                <p class="commit__loc">
+                  <i class="fa-solid fa-location-dot"></i> Colombo, Sri Lanka
+                </p>
+                <p class="commit__msg">
+                  Built <strong>iManage360</strong> — a full-stack app on
+                  Next.js and Node.js.
+                </p>
+              </div>
+            </article>
+
+            <article class="commit">
+              <div class="commit__rail"><span class="commit__node"></span></div>
+              <div class="commit__body">
+                <div class="commit__head">
+                  <span class="commit__branch">merged</span>
+                  <span class="commit__date">07/2022 — 12/2025</span>
+                </div>
+                <h3 class="commit__role">
+                  Full Stack Developer
+                  <span class="commit__at"
+                    >@ Baylanka Technologies Pvt (Ltd).</span
+                  >
+                </h3>
+                <p class="commit__loc">
+                  <i class="fa-solid fa-location-dot"></i> Colombo, Sri Lanka
+                </p>
+                <p class="commit__msg">
+                  Shipped five client products end-to-end — see
+                  <a href="#projects">projects/</a> below.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SKILLS ============ -->
+      <section class="skills" id="skills">
+        <div class="section__inner">
+          <p class="section__eyebrow">03 · skills.json</p>
+          <h2 class="section__title">Tools I reach for</h2>
+
+          <div class="skills__grid">
+            <div class="skillcard skillcard--blue">
+              <h3><i class="fa-solid fa-display"></i> Front-end</h3>
+              <div class="pills">
+                <span class="pill">HTML</span><span class="pill">CSS</span
+                ><span class="pill">SCSS</span>
+                <span class="pill">Bootstrap</span
+                ><span class="pill">Material UI</span
+                ><span class="pill">Tailwind CSS</span>
+              </div>
+            </div>
+            <div class="skillcard skillcard--green">
+              <h3><i class="fa-solid fa-code"></i> Languages</h3>
+              <div class="pills">
+                <span class="pill">JavaScript</span
+                ><span class="pill">TypeScript</span>
+                <span class="pill">PHP</span><span class="pill">Dart</span
+                ><span class="pill">Java</span>
+              </div>
+            </div>
+            <div class="skillcard skillcard--orange">
+              <h3>
+                <i class="fa-solid fa-layer-group"></i> Frameworks &amp;
+                libraries
+              </h3>
+              <div class="pills">
+                <span class="pill">Angular</span><span class="pill">Ionic</span
+                ><span class="pill">React JS</span>
+                <span class="pill">Node JS</span
+                ><span class="pill">Flutter</span
+                ><span class="pill">Redux</span>
+                <span class="pill">Next JS</span
+                ><span class="pill">Express JS</span>
+              </div>
+            </div>
+            <div class="skillcard skillcard--purple">
+              <h3>
+                <i class="fa-solid fa-database"></i> Databases &amp; tools
+              </h3>
+              <div class="pills">
+                <span class="pill">MongoDB</span><span class="pill">MySQL</span
+                ><span class="pill">Firebase</span>
+                <span class="pill">MySQL Workbench</span
+                ><span class="pill">phpMyAdmin</span>
+              </div>
+            </div>
+            <div class="skillcard skillcard--blue">
+              <h3><i class="fa-solid fa-code-branch"></i> Version control</h3>
+              <div class="pills">
+                <span class="pill">Git</span><span class="pill">GitLab</span
+                ><span class="pill">GitHub</span>
+              </div>
+            </div>
+            <div class="skillcard skillcard--green">
+              <h3><i class="fa-solid fa-comments"></i> Languages spoken</h3>
+              <ul class="langlist">
+                <li>
+                  <span>English</span
+                  ><span class="dots"
+                    ><i></i><i></i><i></i><i class="off"></i><i class="off"></i
+                  ></span>
+                </li>
+                <li>
+                  <span>Sinhala</span
+                  ><span class="dots"
+                    ><i></i><i></i><i></i><i></i><i class="off"></i
+                  ></span>
+                </li>
+                <li>
+                  <span>Tamil</span
+                  ><span class="dots"><i></i><i></i><i></i><i></i><i></i></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PROJECTS ============ -->
+      <section class="projects" id="projects">
+        <div class="section__inner">
+          <p class="section__eyebrow section__eyebrow--light">04 · projects/</p>
+          <h2 class="section__title section__title--light">
+            Shipped &amp; maintained
+          </h2>
+
+          <div class="projects__grid">
+            <article class="project">
+              <div class="project__head">
+                <span class="project__tag">mobile · web · backend</span>
+                <i class="fa-solid fa-house-chimney project__icon"></i>
+              </div>
+              <h3>Woblu Maintenance</h3>
+              <p>
+                A full-stack property-upkeep platform for a German client —
+                mobile app in Ionic, web app in PHP, and a Node backend
+                connecting owners, tenants and maintenance teams.
+              </p>
+              <div class="project__stack">
+                <span>Ionic</span><span>PHP</span><span>Node.js</span>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project__head">
+                <span class="project__tag">web · telecom</span>
+                <i class="fa-solid fa-tower-cell project__icon"></i>
+              </div>
+              <h3>COMSOL</h3>
+              <p>
+                A full-stack application for a German telecom company, built
+                with a React front end and a PHP backend — published and
+                maintained through multiple release cycles.
+              </p>
+              <div class="project__stack">
+                <span>React</span><span>PHP</span>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project__head">
+                <span class="project__tag">mobile · travel</span>
+                <i class="fa-solid fa-plane project__icon"></i>
+              </div>
+              <h3>Onres 24</h3>
+              <p>
+                A flight-tracking mobile app for the ONRES 24 system, built with
+                Ionic to give travellers live status on their bookings.
+              </p>
+              <div class="project__stack"><span>Ionic</span></div>
+            </article>
+
+            <article class="project">
+              <div class="project__head">
+                <span class="project__tag">mobile · IoT</span>
+                <i class="fa-solid fa-wind project__icon"></i>
+              </div>
+              <h3>Sico-vent</h3>
+              <p>
+                A Flutter mobile app that acts as a remote control for a window
+                opening-and-closing device — bridging a hardware product with a
+                simple mobile UI.
+              </p>
+              <div class="project__stack"><span>Flutter</span></div>
+            </article>
+
+            <article class="project">
+              <div class="project__head">
+                <span class="project__tag">mobile · retail</span>
+                <i class="fa-solid fa-boxes-stacked project__icon"></i>
+              </div>
+              <h3>Trenddeko</h3>
+              <p>
+                An inventory-management mobile app for the Trenddeko system,
+                built with Ionic for day-to-day stock tracking.
+              </p>
+              <div class="project__stack"><span>Ionic</span></div>
+            </article>
+
+            <article class="project">
+              <div class="project__head">
+                <span class="project__tag">web · productivity</span>
+                <i class="fa-solid fa-diagram-project project__icon"></i>
+              </div>
+              <h3>iManage360</h3>
+              <p>
+                A full-stack management application built at iTeq Solution
+                Center, with a Next.js front end and a Node.js backend.
+              </p>
+              <div class="project__stack">
+                <span>Next.js</span><span>Node.js</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CONTACT ============ -->
+      <section class="contact" id="contact">
+        <div class="section__inner">
+          <p class="section__eyebrow">05 · contact.sh</p>
+          <div class="contact__grid">
+            <div class="contact__info">
+              <h2 class="section__title">Let's talk about your project</h2>
+              <p>
+                Open to full-stack roles and freelance builds — web, mobile, or
+                both. Fastest reply is by email.
+              </p>
+
+              <ul class="contact__list">
+                <li>
+                  <i class="fa-solid fa-envelope"></i>
+                  <div>
+                    <strong>Email</strong
+                    ><a href="mailto:mhdsha29@gmail.com">mhdsha29@gmail.com</a>
+                  </div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-phone"></i>
+                  <div>
+                    <strong>Phone</strong
+                    ><a href="tel:+94766925805">+94 76 692 5805</a>
+                  </div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-location-dot"></i>
+                  <div>
+                    <strong>Location</strong
+                    ><span
+                      >No.119/5, Kapuwatta, Denipitiya, Weligama, Matara, Sri
+                      Lanka</span
+                    >
+                  </div>
+                </li>
+              </ul>
+
+              <div class="contact__social">
+                <a
+                  href="https://www.linkedin.com/in/aasim-mohamed-423346215/"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="LinkedIn"
+                  ><i class="fa-brands fa-linkedin-in"></i
+                ></a>
+                <a
+                  href="https://github.com/aasimmohamed"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="GitHub"
+                  ><i class="fa-brands fa-github"></i
+                ></a>
+                <a href="mailto:mhdsha29@gmail.com" aria-label="Email"
+                  ><i class="fa-solid fa-envelope"></i
+                ></a>
+              </div>
+            </div>
+
+            <form
+              class="contact__form"
+              action="https://formspree.io/f/mnqwrzoq"
+              method="POST"
+            >
+              <div class="field-row">
+                <div class="field">
+                  <label for="user-name">Name</label>
+                  <input
+                    type="text"
+                    id="user-name"
+                    name="user-name"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@company.com"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="field">
+                <label for="sub-title">Subject</label>
+                <input
+                  type="text"
+                  id="sub-title"
+                  name="sub-title"
+                  placeholder="What's this about?"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
+                  placeholder="Describe your project..."
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn--primary btn--block">
+                Send message <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <span
+          >© <span id="year"></span> M.A. Mohamed. Built from scratch, no
+          template.</span
+        >
+        <a href="#home" class="footer__top"
+          >Back to top <i class="fa-solid fa-arrow-up"></i
+        ></a>
+      </div>
     </footer>
 
- </body>
- <script src="app.js"></script>
- </html>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
